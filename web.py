@@ -1,3 +1,5 @@
+# In lordgrindelwald/musictg/musictg-master/web.py
+
 import os
 import threading
 from flask import Flask
@@ -15,10 +17,16 @@ def hello_world():
 def run_bot():
     start_bot()
 
-# Start the bot in a background thread
+# --- Start of The Fix ---
+# Start the bot in a background thread.
+# This code will now run as soon as the file is imported by Gunicorn.
+bot_thread = threading.Thread(target=run_bot)
+bot_thread.daemon = True  # Ensures the thread will exit when the main process does
+bot_thread.start()
+# --- End of The Fix ---
+
+# The __main__ block is still useful for running the app locally
 if __name__ == "__main__":
-    bot_thread = threading.Thread(target=run_bot)
-    bot_thread.start()
     # Get the port from the environment variable, default to 10000
     port = int(os.environ.get('PORT', 10000))
     # Run the Flask app
