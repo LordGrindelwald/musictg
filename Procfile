@@ -1,1 +1,1 @@
-worker: start
+web: gunicorn web:app
