@@ -46,6 +46,8 @@ dependencies = [
     "pytgcrypto>=1.2.11",
     "ujson>=5.11.0",
     "yt-dlp>=2025.9.5",
+    "Flask>=3.0.0",
+    "gunicorn>=21.2.0"
 ]
 
 [project.license]
