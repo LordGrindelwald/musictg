@@ -23,7 +23,7 @@ class Bot(Client):
     def __init__(self) -> None:
         """Initialize the bot with configuration and services."""
         super().__init__(
-            bot_token=config.TOKEN,  # Corrected parameter
+            token=config.TOKEN,  # Corrected parameter
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             default_parse_mode="html",
