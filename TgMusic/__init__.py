@@ -15,13 +15,15 @@ StartTime = datetime.now()
 from TgMusic.core import call, tg, db, config
 
 
+# In lordgrindelwald/musictg/musictg-master/TgMusic/__init__.py
+
 class Bot(Client):
     """Main bot class handling initialization and lifecycle management."""
 
     def __init__(self) -> None:
         """Initialize the bot with configuration and services."""
         super().__init__(
-            token=config.TOKEN,
+            bot_token=config.TOKEN,  # Corrected parameter
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             default_parse_mode="html",
@@ -32,7 +34,7 @@ class Bot(Client):
             options={"ignore_background_updates": config.IGNORE_BACKGROUND_UPDATES},
         )
         self._initialize_services()
-
+        
     def _initialize_services(self) -> None:
         """Initialize all service dependencies."""
         from TgMusic.modules.jobs import InactiveCallManager
