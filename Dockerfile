@@ -14,4 +14,6 @@ COPY . /app/
 
 RUN uv pip install -e . --system
 
-CMD ["start"]
+EXPOSE 10000
+
+CMD ["gunicorn", "web:app"]
